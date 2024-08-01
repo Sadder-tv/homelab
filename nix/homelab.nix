@@ -40,7 +40,7 @@ in {
         address = "${cfg.networking.subnet}.1";
         interface = cfg.networking.interface;
       };
-      nameservers = [ "1.1.1.1" "1.0.0.1" ];
+      nameservers = [ "${cfg.networking.subnet}.1" ];
     };
   };
 }
