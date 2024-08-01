@@ -1,6 +1,6 @@
 services:
   portainer:
-    image: portainer/portainer-ee:2.19.1
+    image: portainer/portainer-ce:2.19.1
     container_name: portainer
     restart: always
     volumes:
@@ -8,19 +8,6 @@ services:
       - portainer_data:/data
     ports:
       - 9443:9443
-    networks:
-      - https
-    labels:
-      - traefik.enable=true
-      - traefik.http.routers.portainer.entrypoints=https
-      - traefik.http.routers.portainer.rule=Host(`manage.sadder.tv`)
-      - traefik.http.routers.portainer.tls=true
-      - traefik.http.routers.portainer.tls.certresolver=le
-      - traefik.http.services.portainer.loadbalancer.server.port=9000
-
-networks:
-  https:
-    external: true
 
 volumes:
   portainer_data:
