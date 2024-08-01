@@ -1,9 +1,7 @@
 { pkgs, ... }:
 
 {
-  imports = [
-    ./homelab.nix
-  ];
+  imports = [ ];
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -26,12 +24,6 @@
   };
 
   services.openssh.enable = true;
-
-  homelab.networking = {
-    enable = true;
-    subnet = "192.168.20";
-    interface = "ens33";
-  };
 
   nix = {
     package = pkgs.nixFlakes;

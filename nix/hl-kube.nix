@@ -4,7 +4,6 @@
   imports = [ ];
 
   networking.hostName = hostName;
-  homelab.networking.ipv4 = node + 2 + 1;
 
   services.k3s = {
     enable = true;
