@@ -15,7 +15,7 @@
       "--write-kubeconfig-mode 0644"
       "--disable servicelb"
       "--disable traefik"
-      "--disbale local-storage"
+      "--disable local-storage"
     ]);
     clusterInit = node == 1;
     serverAddr = if node == 1 then "" else "https://hl-kube-1:6443";
