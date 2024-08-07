@@ -1,4 +1,4 @@
-{ hostName, node, ... }:
+{ hostName, node, pkgs, ... }:
 
 {
   imports = [ ];
@@ -20,4 +20,18 @@
     clusterInit = node == 1;
     serverAddr = if node == 1 then "" else "https://hl-kube-1:6443";
   };
+
+  systemd.tmpfiles.rules = [
+    "L+ /usr/local/bin - - - - /run/current-system/sw/bin"
+  ];
+
+  services.openiscsi = {
+    enable = true;
+    name = "iqn.2024-08.home.uwuki:${hostName}";
+  };
+
+  environment.systemPackages = with pkgs; [
+    cifs-utils
+    nfs-utils
+  ];
 }
