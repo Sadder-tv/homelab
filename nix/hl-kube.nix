@@ -15,6 +15,7 @@
       "--disable servicelb"
       "--disable traefik"
       "--disable local-storage"
+      "--tsl-san 192.168.20.9"
     ]);
     clusterInit = node == 1;
     serverAddr = if node == 1 then "" else "https://hl-kube-1:6443";
